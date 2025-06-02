@@ -1,0 +1,592 @@
+/* ==========BASIC UNIVERSAL STYLING & CLEAN UP============= */
+/* some basic css resetting */
+html {scroll-behavior: smooth;} /* Set smooth scrolling for anchor links */
+* { box-sizing: border-box; }
+
+body { 
+    margin: 0;
+    font-family: 'Baloo 2', sans-serif;
+    background-color: #fffdee;
+    color: #333;
+    overflow-x: hidden;
+ }
+/* font styling */
+h2 { font-family: "Lilita One", sans-serif; }
+
+h1 { font-family: "Lilita One", sans-serif; }
+/* button styling */
+button {
+  font-family: 'Baloo 2', sans-serif;
+  background: #f6ba29;
+  color: #fffdee;
+  border: #473939 solid 1px;
+  max-height: fit-content;
+  font-weight: bold;
+  padding: 20px 50px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color:rgb(227, 108, 108);
+}
+/* ==========HEADER============= */
+/* ==========NAVIGATION============= */
+.logo img {
+    height: 40px;
+    transform: translateX(-50px); /* Adjust logo position to be centered */
+}
+/* Navigation bar styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f6ba29;
+  border-bottom: 1px solid #333;
+  height: 65px;
+  padding: 0 30px;
+  position: fixed; /* Fixes navbar to the top */
+  top: 0; /* Keeps navbar at the top of the viewport */
+  width: 100%;
+  z-index: 1000; /* Ensures navbar stays on top of other content */
+}
+
+/* Navigation left section */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between logo and links */
+}
+
+/* Navigation right section */
+.nav-left ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-left li a,
+.nav-right .contact {
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hover effect for navigation links */
+.nav-left li a:hover,
+.nav-right .contact:hover {
+  color:  rgb(227, 108, 108);
+}
+
+/* ==========HERO SECTION============= */
+.hero {
+  /* Ensures background covers the section */
+  background: url("../images/hero.png") no-repeat center top/cover;
+  background-size: cover;
+  color: #fff;
+  border: #333 solid 1px;
+  display: flex;
+  justify-content: center;
+  height: 100vh; /* Uses 100vh for full screen hero section */
+}
+
+#hero-title {
+  font-size: 100px;
+  transition: transform 0.5s ease;
+  color:#e05454
+}
+
+#hero-title span:hover {
+  color:rgb(246, 133, 133);
+}
+
+/* ==========MAIN BODY CONTENT============= */
+
+/* ==========PRODUCT SECTION============= */
+#products {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+/* Grid for product cans */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 X 3 grid of cans */
+  justify-items: center;
+}
+
+/* Individual can styling */
+.can {
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+/* Can image styling */
+.product-grid .can img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures image fits within the can container */
+}
+
+.can {
+  position: relative; /* Allows for absolute positioning of flare and flavor name */
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.can-img {
+  max-height: 80%; /* Ensures the can image does not exceed 80% of the container height */
+  transition: transform 0.5s ease; /* Smooth scaling effect on hover */
+  position: relative;
+}
+
+/* Flare effect for can */
+.flare {
+  position: absolute; 
+  top: 50%; /* Centers the flare vertically */
+  left: 50%; /* Centers the flare horizontally */
+  width: 140%; 
+  height: auto;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0; /* Initially hidden */
+  transition: all 0.5s ease;
+}
+
+.flavor-name {
+  font-size: 20px;
+  color: #333;
+  opacity: 0;
+  margin-top: 0.1px;
+  transition: opacity 0.5s ease;
+}
+
+.can:hover .can-img {
+  transform: scale(1.15); /* Scales the can image on hover */
+}
+
+.can:hover .flare {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2); /* Scales the flare effect on hover */
+}
+
+.can:hover .flavor-name { /* Shows the flavor name on hover */
+  opacity: 1;
+}
+
+/* ==========INGREDIENTS SECTION============= */
+.ingredients-header h2{
+  color:#799431;
+  font-size:100px;
+  margin: 0;
+  padding: 10px 50px;
+}
+
+#ingredients {
+  border: #333 solid 1px;
+}
+
+.ingredients-header {
+  display: flex;
+  align-items: center;
+}
+/* Button styling */
+.ingredients-header button {
+  background-color:#fffdee;
+  color: #799431;
+}
+
+.ingredients-header button:hover {
+  background-color: #799431;
+  color: #fffdee;
+}
+/* Ingredient carousel styling */
+.ingredient-carousel {
+  overflow: hidden; /* Hides overflow to create a scrolling effect */
+  width: 100%;
+  
+}
+
+/* .ingredient-track uses animation for infinite horizontal scrolling effect. */
+/* Code adapted from: https://blog.logto.io/css-only-infinite-scroll */
+.ingredient-track {
+  display: flex;
+  width: 200%;
+  animation: scrollIngredients 30s linear infinite; /* Adjust duration for speed of scroll */
+}
+.ingredient-track:hover {
+  animation-play-state: paused; /* Pauses the animation on hover */
+}
+.ingredient-track img {
+  width: 300px;
+  margin: 0 50px;
+  transition: ease-in-out 0.3s;
+}
+.ingredient-track img:hover {
+  transform: scale(1.15); /* Slightly enlarges the image on hover */
+}
+
+/* Animation for scrolling ingredients */
+@keyframes scrollIngredients {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========QUIZ SECTION============= */
+#quiz {
+  /* Ensures background covers the section */
+  background: url("../images/quiz-banner.webp") no-repeat center top/cover;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+}
+
+#quiz p {
+  font-size: 20px;
+}
+
+#quiz-title {
+  font-size: 150px;
+  color: rgb(231, 97, 97);
+}
+
+.quiz-content {
+  background: #f6ba29;
+  padding: 50px;
+  border-radius: 200px;
+  border: #333 solid 1px;
+}
+
+#quiz button{
+  background-color: #fffdee;
+  color: #f6ba29;
+}
+
+#quiz button:hover {
+  background-color: rgb(227, 108, 108);
+  color: #fffdee;
+}
+
+/* ==========STOCKIST SECTION============= */
+.store-logos {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.stockists {
+  border: #333 solid 1px;
+  background:#fffdee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stockist carousel styling */
+/* Code adapted from: https://blog.logto.io/css-only-infinite-scroll */
+.stockist-carousel {
+  display: flex;
+  width: 200%; 
+  overflow: hidden;
+  animation: scrollStockists 40s linear infinite; /* Adjust duration for speed of scroll, slower than ingredients */
+}
+
+.stockist-group {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+/* Stockist images styling */
+.stockist {
+  height: 80px;
+  margin: 5px;
+}
+
+/* Animation for scrolling stockists */
+@keyframes scrollStockists {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========OUR STORY SECTION============= */
+#story {
+  background: #fffdee;
+  padding: 100px 50px
+}
+
+.story-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  gap: 100px;
+  margin: 0 auto;
+}
+
+.story-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+#story-title {
+  color: #f6ba29;
+  font-size: 70px;
+  margin-bottom: 0;
+}
+/* Story text styling */
+.story-text p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+#story-btn {
+  width: fit-content;
+}
+/* Our Story button hover styling */
+#story-btn:hover {
+  background: rgb(227, 108, 108);
+}
+
+/* Our Story image styling */
+.story-img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Creates a unique shape for the image */
+  /* From: https://9elements.github.io/fancy-border-radius/ */
+  border: #333 solid 1px;
+}
+
+/* ==========FOOTER STYLIING============= */
+footer {
+  background: #f6ba29;
+  padding: 20px 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  border-top: 1px solid #333;
+}
+
+/* Footer content styling */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo img {
+  max-width: 120px;
+}
+
+/* Footer links styling */
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-links a:hover {
+  color: #333;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 26px;
+}
+
+/* Footer social media icons styling */
+.footer-socials img {
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+/* Footer social media icons hover effect */
+.footer-socials img:hover {
+  transform: scale(1.2);
+  color: #333;
+}
+
+/* Footer disclaimer text styling */
+.footer-disclaimer {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 2em;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ==========RESPONSIVE DESIGN============= */
+
+/* ===== DESKTOP HD: Media query for most standard HD (not 4k) desktops ===== */
+@media only screen and (max-width: 1920px) {
+ 
+}
+
+/* ===== SMALL DESKTOP: Media query for laptop/small desktop ===== */
+@media only screen and (max-width: 1366px) { 
+  /* Scale down hero title */
+   #hero-title {
+    font-size: 100px;
+  }
+
+  .ingredients-header h2 {
+    font-size: 80px;
+    padding: 15px
+  }
+  /* Shrink ingredient carousel images */
+  .ingredient-track img {
+  width: 150px;
+  margin: 0 25px;
+  }
+
+  #quiz-title {
+    font-size: 110px;
+  }
+
+  .quiz-content {
+    margin: 40px;
+  }
+
+   .story-content {
+    flex-direction: column-reverse;
+    gap:10px
+  } 
+    
+}
+
+/* ===== TABLET: Media queries for verticle and horizontal ===== */
+@media only screen and (max-width: 1024px) { 
+  /* Change to 3 X 2 grid of cans */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Scale down hero title */
+  #hero-title {
+    font-size: 80px;
+  }    
+}
+
+@media only screen and (max-width: 768px) { 
+   .hero {
+    text-align: center;
+  }
+  /* scale down hero title */
+  #hero-title {
+    font-size: 70px;
+  }
+
+  .nav-left {
+    display: none;
+  }
+
+  /* Keep logo centered */
+  .logo img {
+    transform: translateX(0);
+  }
+
+   .ingredients-header h2 {
+    font-size: 60px;
+    padding: 15px
+  }
+
+  /* Scale down quiz title */
+  #quiz-title {
+    font-size: 100px;
+  }
+
+  .quiz-content {
+    margin: 40px;
+  } 
+}
+
+/* ===== MOBILE: Media queries for verticle and horizontal ===== */
+@media only screen and (max-width: 640px) { 
+  /* Reduce button padding for smaller screens */
+  button {
+    padding: 10px 25px;
+  }
+  /* Scale down hero title */
+  #hero-title {
+    font-size: 62px;
+  }
+  /* Stack product grid to single column */
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  /* Make can responsive instead of fixed width */
+  .can {
+    width: 100%;
+    max-width: 400px; /* Prevents it from getting too large */
+  }
+
+  .product-grid .can {
+    margin-bottom: 5px;
+  }
+  /* Stack ingredients header and button vertically */
+  .ingredients-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 12px;
+  }
+  .ingredients-header h2 {
+    font-size: 50px;
+    padding: 10px
+  }
+  /* Shrink ingredient images */
+  .ingredient-track img {
+  width: 150px;
+  margin: 0 25px;
+  }
+  /* Scale down quiz title */
+  #quiz-title {
+    font-size: 100px;
+  }
+
+  #quiz p {
+  font-size: 15px;
+  }
+
+  .quiz-content {
+    margin-bottom: 80px;
+  }    
+}
+
