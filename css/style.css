@@ -590,3 +590,11 @@ footer {
   }    
 }
 
+
+@media only screen and (max-width: 360px) { 
+  /* Scale down quiz title */
+  #quiz-title {
+    font-size: 70px;
+  }        
+        
+}
