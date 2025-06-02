@@ -92,6 +92,7 @@ button:hover {
   border: #333 solid 1px;
   display: flex;
   justify-content: center;
+  padding-top: 65px; /* Same as navbar height */
   height: 100vh; /* Uses 100vh for full screen hero section */
 }
 
