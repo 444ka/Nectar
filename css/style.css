@@ -167,7 +167,7 @@ button:hover {
   color: #333;
   opacity: 0;
   margin-top: 0.1px;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease; /* Smooth transition for flavor name visibility */
 }
 
 .can:hover .can-img {
@@ -590,11 +590,9 @@ footer {
   }    
 }
 
-
 @media only screen and (max-width: 360px) { 
   /* Scale down quiz title */
   #quiz-title {
     font-size: 70px;
   }        
-        
 }
